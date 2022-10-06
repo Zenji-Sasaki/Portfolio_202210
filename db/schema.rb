@@ -14,10 +14,10 @@ ActiveRecord::Schema.define(version: 2022_10_04_090302) do
 
   create_table "products", force: :cascade do |t|
     t.string "name"
-    t.integer "restaurants_id", null: false
+    t.integer "restaurant_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["restaurants_id"], name: "index_products_on_restaurants_id"
+    t.index ["restaurant_id"], name: "index_products_on_restaurant_id"
   end
 
   create_table "restaurants", force: :cascade do |t|
@@ -39,5 +39,5 @@ ActiveRecord::Schema.define(version: 2022_10_04_090302) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "products", "restaurants", column: "restaurants_id"
+  add_foreign_key "products", "restaurants"
 end

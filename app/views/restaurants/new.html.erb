@@ -1,2 +1,14 @@
-<h1>Restaurants#new</h1>
-<p>Find me in app/views/restaurants/new.html.erb</p>
+<h1 class="title">新規レストラン登録</h1>
+<%= form_with model: @restaurant do |f| %>
+<table class="box">
+  <tr>
+    <th><%= f.label :name , "レストラン名" %></th>
+    <td><%= f.text_field :name, style: "width:100%" %></td>
+  </tr>
+  <tr>
+    <th><%= f.label :category , "カテゴリー" %></th>
+    <td><%= f.select :category, [["test1", "test1"], ["test2", "test2"]], include_blank: "選択してください" %></td>
+  </tr>
+</table>
+<%= f.submit "登録", class: "btn btn-primary temp" %>
+<% end %>

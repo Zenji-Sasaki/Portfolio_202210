@@ -1,2 +1,11 @@
-<h1>Products#new</h1>
-<p>Find me in app/views/products/new.html.erb</p>
+<h1 class="title">登録確認画面</h1>
+<%= form_with model: @product do |f| %>
+<%= f.hidden_field :restaurant_id, value: @restaurant.id %>
+<table class="box">
+  <tr>
+    <th><%= f.label :name , "商品名" %></th>
+    <td><%= f.text_field :name, style: "width:100%" %></td>
+  </tr>
+</table>
+<%= f.submit "商品を登録する", class: "btn btn-primary temp" %>
+<% end %>

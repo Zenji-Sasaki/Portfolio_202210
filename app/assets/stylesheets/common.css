@@ -1,0 +1,42 @@
+.notice {
+  background-color: #98ecaa;
+  padding: 5px;
+  margin: 0;
+}
+
+.alert {
+  background-color: #ec98ac8f;
+  padding: 5px;
+  margin: 0;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+table th {
+  background-color: #add8e6;
+  padding: 10px 20px;
+  border: solid 1px;
+}
+
+table td {
+  background-color: #f0f8ff;
+  padding: 10px 20px;
+  border: solid 1px;
+}
+
+.title {
+  font-size: 30px;
+  text-shadow: 1px 1px 2px silver;
+  margin: 3%;
+}
+
+.box {
+  margin: 3%;
+}
+
+.temp {
+  margin: 3%;
+}

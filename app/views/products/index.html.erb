@@ -1,2 +1,28 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<% if flash[:notice] %>
+  <p class = "notice"><%= flash[:notice] %></p>
+<% end %>
+<% if flash[:alert] %>
+  <p class = "alert"><%= flash[:alert] %></p>
+<% end %>
+<h1 class="title">商品一覧</h1>
+<table class="box">
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>レストラン名</th>
+      <th>レストランのカテゴリー</th>
+      <th>投票数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+    <tr>
+      <td><%= link_to product.name, product %></td>
+      <td><%= link_to product.restaurant.name, product.restaurant %></td>
+      <td><%= product.restaurant.category %></td>
+      <td>not yet</td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to "ホーム画面に戻る", root_path, style: "margin:3%" %>

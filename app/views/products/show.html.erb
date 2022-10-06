@@ -1,2 +1,15 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<h1 class="title">商品詳細</h1>
+<table class="box">
+  <tr>
+    <th>商品名</th>
+    <td><%= @product.name %></td>
+  </tr>
+  <tr>
+    <th>レストラン名</th>
+    <td><%= @product.restaurant.name %></td>
+  </tr>
+  <tr>
+  <th>コメント</th>
+  <td>not yet</td>
+</tr>
+</table>

@@ -1,2 +1,40 @@
-<h1>Restaurants#show</h1>
-<p>Find me in app/views/restaurants/show.html.erb</p>
+<h1 class="title">レストラン詳細</h1>
+<table class="box">
+  <tr>
+    <th>レストラン名</th>
+    <td><%= @restaurant.name %></td>
+  </tr>
+  <tr>
+    <th>カテゴリー</th>
+    <td><%= @restaurant.category %></td>
+  </tr>
+</table>
+<h1 class="title">登録商品</h1>
+<table class="box">
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>投票数</th>
+      <th>投票ボタン</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @restaurant.products.each do |product| %>
+    <tr>
+      <td><%= link_to product.name, product %></td>
+      <td>not yet</td>
+      <td>not yet</td>
+    </tr>
+  <% end %>
+</table>
+<h1 class="title">商品を新規登録する</h1>
+<%= form_with url: new_product_path do |f| %>
+<%= f.hidden_field :restaurant_id, value: @restaurant.id %>
+<table class="box">
+  <tr>
+    <th><%= f.label :name , "商品名" %></th>
+    <td><%= f.text_field :name, style: "width:100%" %></td>
+  </tr>
+</table>
+<%= f.submit "登録", class: "btn btn-primary temp" %>
+<% end %>
