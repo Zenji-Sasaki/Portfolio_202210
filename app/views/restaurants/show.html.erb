@@ -9,32 +9,29 @@
     <td><%= @restaurant.category %></td>
   </tr>
 </table>
-<h1 class="title">登録商品</h1>
+<h1 class="title">人気商品ランキング</h1>
 <table class="box">
   <thead>
     <tr>
+      <th>順位</th>
       <th>商品名</th>
       <th>投票数</th>
-      <th>投票ボタン</th>
     </tr>
   </thead>
   <tbody>
   <% @restaurant.products.each do |product| %>
     <tr>
+      <td>not yet</td>
       <td><%= link_to product.name, product %></td>
-      <td>not yet</td>
-      <td>not yet</td>
+      <td><%= product.votes.count %></td>
     </tr>
   <% end %>
 </table>
-<h1 class="title">商品を新規登録する</h1>
-<%= form_with url: new_product_path do |f| %>
-<%= f.hidden_field :restaurant_id, value: @restaurant.id %>
-<table class="box">
-  <tr>
-    <th><%= f.label :name , "商品名" %></th>
-    <td><%= f.text_field :name, style: "width:100%" %></td>
-  </tr>
-</table>
-<%= f.submit "登録", class: "btn btn-primary temp" %>
+<% if user_signed_in? %>
+  <%= form_with url: new_product_path do |f| %>
+  <%= f.hidden_field :restaurant_id, value: @restaurant.id %>
+  <%= f.submit "商品を新規登録する", class: "btn btn-primary temp" %>
+  <% end %>
+<% else %>
+  <%= link_to "商品を登録するにはログインしてください。", new_user_session_path %>
 <% end %>

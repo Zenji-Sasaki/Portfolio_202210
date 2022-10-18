@@ -20,7 +20,7 @@
       <td><%= link_to product.name, product %></td>
       <td><%= link_to product.restaurant.name, product.restaurant %></td>
       <td><%= product.restaurant.category %></td>
-      <td>not yet</td>
+      <td><%= product.votes.count %></td>
     </tr>
     <% end %>
   </tbody>
