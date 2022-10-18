@@ -1,5 +1,6 @@
 <h1 class="title">新規レストラン登録</h1>
 <%= form_with model: @restaurant do |f| %>
+<%= f.hidden_field :user_id, value: current_user.id %>
 <table class="box">
   <tr>
     <th><%= f.label :name , "レストラン名" %></th>

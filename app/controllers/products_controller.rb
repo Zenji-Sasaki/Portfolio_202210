@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new(params.permit(:name, @restaurant_id))
     @restaurant = Restaurant.find(params[:restaurant_id])
+    @user_id = current_user.id
   end
 
   def create
@@ -22,10 +23,13 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @vote = Vote.new
+    @comments = @product.comments
+    @comment = Comment.new
   end
 
   private
   def product_params
-    params.require(:product).permit(:name, :restaurant_id)
+    params.require(:product).permit(:name, :restaurant_id, :user_id)
   end
 end

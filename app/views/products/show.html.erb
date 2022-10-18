@@ -1,3 +1,9 @@
+<% if flash[:notice] %>
+  <p class = "notice"><%= flash[:notice] %></p>
+<% end %>
+<% if flash[:alert] %>
+  <p class = "alert"><%= flash[:alert] %></p>
+<% end %>
 <h1 class="title">商品詳細</h1>
 <table class="box">
   <tr>
@@ -8,8 +14,37 @@
     <th>レストラン名</th>
     <td><%= @product.restaurant.name %></td>
   </tr>
+
   <tr>
-  <th>コメント</th>
-  <td>not yet</td>
-</tr>
+    <th>投票数</th>
+    <td><%= @product.votes.count %></td>
+  </tr>
 </table>
+<% if user_signed_in? %>
+  <%= button_to "投票ボタン", product_votes_path(@product), class: "temp" %>
+<% else %>
+  <%= link_to "投票するにはログインしてください。", new_user_session_path %>
+<% end %>
+<h1 class="title">コメント一覧</h1>
+<table class="box">
+  <thead>
+    <tr>
+      <th>コメント</th>
+      <th>投稿者</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @comments.each do |comment| %>
+    <tr>
+      <td><%= comment.content %></td>
+      <td><%= comment.user.email %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<h1 class="title">コメントする</h1>
+<%= form_with model:[@product, @comment] do |f| %>
+  <%= f.hidden_field :product_id, value: @product.id %>
+  <%= f.text_area :content, size: "40x5", class: "temp" %>
+  <%= f.submit "コメント送信", class: "btn-sm btn-primary" %>
+<% end %>
