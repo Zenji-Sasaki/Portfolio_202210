@@ -1,6 +1,7 @@
 class RestaurantsController < ApplicationController
   def index
-    @restaurants = Restaurant.all
+    @search = Restaurant.ransack(params[:q])
+    @restaurants = @search.result
   end
 
   def new
@@ -20,6 +21,7 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find(params[:id])
+    @ranking = @restaurant.products.limit(5).sort { |a, b| b.votes.count <=> a.votes.count }
   end
 
   def destroy

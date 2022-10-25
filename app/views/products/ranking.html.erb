@@ -1,0 +1,23 @@
+<h1 class="title">総合ランキングTOP10</h1>
+<% @ranking.each.with_index(1) do |product, i| %>
+<table class="box">
+  <thead>
+    <tr>
+      <th>順位</th>
+      <th>商品名</th>
+      <th>レストラン名</th>
+      <th>投票数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>第<%= i %>位</td>
+      <td><%= link_to product.name, product %></td>
+      <td><%= link_to product.restaurant.name, product.restaurant %></td>
+      <td><%= product.votes.count %></td>
+    </tr>
+  </tbody>
+</table>
+<% end %>
+
+<%= link_to "ホーム画面に戻る", root_path, style: "margin:3%" %>

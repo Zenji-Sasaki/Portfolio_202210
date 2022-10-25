@@ -1,6 +1,8 @@
 class ProductsController < ApplicationController
+  before_action :search
   def index
-    @products = Product.all
+    @search = Product.ransack(params[:q])
+    @products = @search.result
   end
 
   def new
@@ -26,6 +28,21 @@ class ProductsController < ApplicationController
     @vote = Vote.new
     @comments = @product.comments
     @comment = Comment.new
+  end
+
+  def destroy
+    @product = Product.find(params[:id])
+    @product.destroy
+    flash[:notice] = "商品を削除しました。"
+    redirect_to :products
+  end
+
+  def search
+    @q = Product.ransack(params[:q])
+  end
+
+  def ranking
+    @ranking = Product.find(Vote.group(:product_id).order('count(product_id) desc').limit(10).pluck(:product_id))
   end
 
   private
