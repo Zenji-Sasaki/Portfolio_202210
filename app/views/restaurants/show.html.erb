@@ -9,7 +9,9 @@
     <td><%= @restaurant.category %></td>
   </tr>
 </table>
-<h1 class="title">人気商品ランキング</h1>
+<h1 class="title">人気商品ランキングTOP5</h1>
+<% @ranking.each.with_index(1) do |product, i| %>
+<% if product.votes.count > 0 %>
 <table class="box">
   <thead>
     <tr>
@@ -19,12 +21,30 @@
     </tr>
   </thead>
   <tbody>
-  <% @restaurant.products.each do |product| %>
     <tr>
-      <td>not yet</td>
+      <td>第<%= i %>位</td>
       <td><%= link_to product.name, product %></td>
       <td><%= product.votes.count %></td>
     </tr>
+  </tbody>
+</table>
+<% end %>
+<% end %>
+<h1 class="title">商品一覧(登録順)</h1>
+<table class="box">
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>投票数</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @restaurant.products.each do |product| %>
+    <tr>
+      <td><%= link_to product.name, product %></td>
+      <td><%= product.votes.count %></td>
+    </tr>
+  </tbody>
   <% end %>
 </table>
 <% if user_signed_in? %>

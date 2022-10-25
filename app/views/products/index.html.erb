@@ -4,14 +4,21 @@
 <% if flash[:alert] %>
   <p class = "alert"><%= flash[:alert] %></p>
 <% end %>
-<h1 class="title">商品一覧</h1>
+
+<h1 class="title">商品一覧(登録順)</h1>
+<h1 class="title">絞り込み検索</h1>
+<%= search_form_for @search do |f| %>
+  <%= f.text_field :name_cont , placeholder: "キーワードを入力" %>
+  <%= f.submit "検索" %>
+<% end %>
 <table class="box">
   <thead>
     <tr>
       <th>商品名</th>
       <th>レストラン名</th>
-      <th>レストランのカテゴリー</th>
+      <th>カテゴリー</th>
       <th>投票数</th>
+      <th>削除</th>
     </tr>
   </thead>
   <tbody>
@@ -21,6 +28,7 @@
       <td><%= link_to product.restaurant.name, product.restaurant %></td>
       <td><%= product.restaurant.category %></td>
       <td><%= product.votes.count %></td>
+      <td><%= link_to "削除", product, method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
     </tr>
     <% end %>
   </tbody>

@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   resources :products do
     resources :votes, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
+    collection do
+      get 'search'
+      get 'ranking'
+    end
   end
   post 'products/new'
   root 'restaurants#home'
