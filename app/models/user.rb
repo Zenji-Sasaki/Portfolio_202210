@@ -3,11 +3,14 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :restaurants
   has_many :products
   has_many :votes, dependent: :destroy
   has_many :comments, dependent: :destroy
-  def already_voted?(product)
-    self.votes.exists?(product_id: product.id)
+  def self.guest
+    find_or_create_by!(email: 'aaa@aaa.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.password_confirmation = user.password
+      user.name = 'ゲスト'
+    end
   end
 end

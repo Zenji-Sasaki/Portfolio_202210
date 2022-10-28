@@ -6,6 +6,7 @@ class RestaurantsController < ApplicationController
 
   def new
     @restaurant = Restaurant.new
+    @user_id = current_user.id
   end
 
   def create

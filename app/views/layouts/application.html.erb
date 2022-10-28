@@ -15,14 +15,12 @@
         <a class="p-2 text-dark"><%= link_to "ランキング", ranking_products_path %></a>
         <a class="p-2 text-dark"><%= link_to "レストランから探す", restaurants_path %></a>
         <a class="p-2 text-dark"><%= link_to "商品から探す", products_path %></a>
-        <% if user_signed_in? %>
-        <a class="p-2 text-dark">ユーザー情報</a>
-        <% end %>
       </nav>
       <% if user_signed_in? %>
       <div class="btn btn-outline-primary"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></div>
       <% else %>
       <div class="btn btn-outline-primary"><%= link_to "ログイン", new_user_session_path %></div>
+      <div class="btn btn-outline-primary"><%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "login" %></div>
       <% end %>
     </div>
     <%= yield %>
