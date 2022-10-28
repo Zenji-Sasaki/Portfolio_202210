@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
+  devise_scope :user do
+    post 'users_guest_sign_in', to: 'users/sessions#new_guest'
+  end
   resources :restaurants
   resources :products do
     resources :votes, only: [:create, :destroy]

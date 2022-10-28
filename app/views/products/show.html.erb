@@ -14,7 +14,6 @@
     <th>レストラン名</th>
     <td><%= @product.restaurant.name %></td>
   </tr>
-
   <tr>
     <th>投票数</th>
     <td><%= @product.votes.count %></td>
@@ -26,6 +25,7 @@
   <%= link_to "投票するにはログインしてください。", new_user_session_path %>
 <% end %>
 <h1 class="title">コメント一覧</h1>
+<% if @product.comments.exists? %>
 <table class="box">
   <thead>
     <tr>
@@ -38,12 +38,15 @@
     <% @comments.each do |comment| %>
     <tr>
       <td><%= comment.content %></td>
-      <td><%= comment.user.email %></td>
+      <td><%= comment.user.name %></td>
       <td><%= comment.updated_at.to_s %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
+<% else %>
+<h1 class="title">コメントはまだありません</h1>
+<% end %>
 <h1 class="title">コメントする</h1>
 <% if user_signed_in? %>
   <%= form_with model:[@product, @comment] do |f| %>
