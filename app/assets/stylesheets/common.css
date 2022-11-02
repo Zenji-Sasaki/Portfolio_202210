@@ -55,7 +55,7 @@ table td {
 
 .sidemenu {
   float: left;
-  width: 28%;
+  width: 24%;
   text-align: center;
   margin: 5% 0;
 }
@@ -73,7 +73,7 @@ table td {
 }
 
 .box {
-  margin: 3% 30%;
+  margin: 3% 25%;
 }
 
 .home-link {
@@ -89,10 +89,10 @@ table td {
 
 .main {
   background-color: white;
-  width: 40%;
+  width: 50%;
   border-radius: 10px;
   border: 1px #ddd solid;
-  margin: 5% 30%;
+  margin: 5% 25%;
 }
 
 .main-title {
