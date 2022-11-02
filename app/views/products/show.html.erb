@@ -9,7 +9,7 @@
     <% end %>
   </div>
   <div class="sidemenu-contents">
-    <h1 class="sidemenu-title">コメントを投稿する</h1>
+    <h1 class="sidemenu-title">コメントを投稿</h1>
     <% if user_signed_in? %>
       <%= form_with model:[@product, @comment] do |f| %>
         <%= render 'layouts/error_messages', model: f.object %>
