@@ -1,18 +1,17 @@
-<% if flash[:notice] %>
-  <p class = "notice"><%= flash[:notice] %></p>
-<% end %>
-<% if flash[:alert] %>
-  <p class = "alert"><%= flash[:alert] %></p>
-<% end %>
-<h1 class="title">商品登録</h1>
-<%= form_with model: @product do |f| %>
-<%= f.hidden_field :restaurant_id, value: @restaurant.id %>
-<%= f.hidden_field :user_id, value: current_user.id %>
-<table class="box">
-  <tr>
-    <th><%= f.label :name , "商品名" %></th>
-    <td><%= f.text_field :name, style: "width:100%", placeholder: "商品名を入力" %></td>
-  </tr>
-</table>
-<%= f.submit "商品を登録する", class: "btn btn-primary temp" %>
-<% end %>
+<%= render 'layouts/flash_messages' %>
+<div class="main">
+  <h1 class="main-title">商品登録</h1>
+  <%= form_with model: @product do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
+    <%= f.hidden_field :restaurant_id, value: @restaurant.id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+  <table class="main-box">
+    <tr>
+      <th><%= f.label :name , "商品名" %></th>
+      <td><%= f.text_field :name, style: "width:100%", placeholder: "商品名を入力" %></td>
+    </tr>
+  </table>
+  <%= f.submit "商品を登録する", class: "btn btn-primary btn-custom" %>
+  <% end %>
+</div>
+<%= render 'layouts/home_link' %>

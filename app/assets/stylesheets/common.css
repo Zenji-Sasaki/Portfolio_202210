@@ -1,13 +1,33 @@
+.background {
+    position: relative;
+    background-image: url(/assets/background_image.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+    background-color:rgba(255,255,255,0.8);
+    background-blend-mode:lighten;
+}
+
+footer {
+  text-align: center;
+  padding: 5px 0;
+  background-color: white;
+  color: #f4a460;
+  height: 40px;
+  width: 100%;
+}
+
 .notice {
   background-color: #98ecaa;
-  padding: 5px;
-  margin: 0;
+  padding: 10px;
+  margin-top: 35px;
 }
 
 .alert {
   background-color: #ec98ac8f;
-  padding: 5px;
-  margin: 0;
+  padding: 10px;
+  margin-top: 35px;
 }
 
 table {
@@ -30,13 +50,57 @@ table td {
 .title {
   font-size: 30px;
   text-shadow: 1px 1px 2px silver;
-  margin: 3%;
+  margin: 5% 30%;
+}
+
+.sidemenu {
+  float: left;
+  width: 28%;
+  text-align: center;
+  margin: 5% 0;
+}
+
+.sidemenu-title {
+  font-size: 30px;
+}
+
+.sidemenu-contents {
+  padding: 30px;
+  border: 1px #ddd solid;
+  border-radius: 10px;
+  margin: 2%;
+  background-color: white;
 }
 
 .box {
-  margin: 3%;
+  margin: 3% 30%;
 }
 
-.temp {
-  margin: 3%;
+.home-link {
+  margin: 3% 30%;
+  padding-bottom: 50px;
+}
+
+.btn-custom {
+  width: 30%;
+  margin: 5%;
+  padding: 30px;
+}
+
+.main {
+  background-color: white;
+  width: 40%;
+  border-radius: 10px;
+  border: 1px #ddd solid;
+  margin: 5% 30%;
+}
+
+.main-title {
+  font-size: 30px;
+  text-shadow: 1px 1px 2px silver;
+  margin: 5%;
+}
+.main-box {
+  margin: 5%;
+  padding: 30px;
 }

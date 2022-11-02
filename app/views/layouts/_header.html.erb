@@ -1,0 +1,13 @@
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm fixed-top">
+<h5 class="my-0 mr-md-auto font-weight-normal"><%= link_to "EssRank", root_path, style: "text-decoration: none;" %></h5>
+<nav class="my-2 my-md-0 mr-md-3">
+  <a class="p-2 text-dark"><%= link_to "ランキング", ranking_products_path, style: "text-decoration: none;" %></a>
+  <a class="p-2 text-dark"><%= link_to "レストランから探す", restaurants_path, style: "text-decoration: none;" %></a>
+  <a class="p-2 text-dark"><%= link_to "商品から探す", products_path, style: "text-decoration: none;" %></a>
+</nav>
+<% if user_signed_in? %>
+<div class="btn btn-outline-primary"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></div>
+<% else %>
+<div class="btn btn-outline-primary"><%= link_to "ログイン", new_user_session_path %></div>
+<% end %>
+</div>

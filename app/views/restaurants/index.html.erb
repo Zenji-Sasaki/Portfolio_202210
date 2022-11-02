@@ -1,34 +1,42 @@
-<% if flash[:notice] %>
-  <p class = "notice"><%= flash[:notice] %></p>
-<% end %>
-<% if flash[:alert] %>
-  <p class = "alert"><%= flash[:alert] %></p>
-<% end %>
-<h1 class="title">レストラン一覧</h1>
-<h1 class="title">絞り込み検索</h1>
-<%= search_form_for @search do |f| %>
-  <%= f.text_field :name_cont , placeholder: "キーワードを入力" %>
-  <%= f.submit "検索" %>
-<% end %>
+<%= render 'layouts/flash_messages' %>
+<h1 class="title">レストラン一覧(登録順)</h1>
+<div class="sidemenu">
+  <div class="sidemenu-contents">
+    <h1 class="sidemenu-title">レストラン検索</h1>
+    <%= search_form_for @search do |f| %>
+      <%= f.text_field :name_cont , placeholder: "レストラン名を入力" %>
+      <%= f.submit "検索" %>
+    <% end %>
+  </div>
+  <div class="sidemenu-contents">
+    <h1 class="sidemenu-title">レストランの新規登録</h1>
+    <% if user_signed_in? %>
+      <%= link_to "登録画面へ", new_restaurant_path, style: "text-decoration: none;" %>
+    <% else %>
+      <%= link_to "登録するにはログインしてください。", new_user_session_path, style: "text-decoration: none;" %>
+    <% end %>
+  </div>
+</div>
+<% if @restaurants.exists? %>
 <table class="box">
   <thead>
     <tr>
       <th>レストラン名</th>
       <th>カテゴリー</th>
-      <th>削除</th>
+      <th>登録日</th>
     </tr>
   </thead>
   <tbody>
     <% @restaurants.each do |restaurant| %>
     <tr>
-      <td><%= link_to restaurant.name, restaurant %></td>
+      <td><%= link_to restaurant.name, restaurant, style: "text-decoration: none;" %></td>
       <td><%= restaurant.category %></td>
-      <td><%= link_to "削除", restaurant, method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
+      <td><%= l restaurant.created_at, format: :default %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
-<% if user_signed_in? %>
-<%= link_to "レストランの新規登録", new_restaurant_path, style: "margin:3%" %>
+<% else %>
+<h1 class="title">対象のレストランは存在しません。</h1>
 <% end %>
-<%= link_to "ホーム画面に戻る", root_path, style: "margin:3%" %>
+<%= render 'layouts/home_link' %>

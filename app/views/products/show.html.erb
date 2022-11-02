@@ -1,59 +1,73 @@
-<% if flash[:notice] %>
-  <p class = "notice"><%= flash[:notice] %></p>
-<% end %>
-<% if flash[:alert] %>
-  <p class = "alert"><%= flash[:alert] %></p>
-<% end %>
-<h1 class="title">商品詳細</h1>
-<table class="box">
-  <tr>
-    <th>商品名</th>
-    <td><%= @product.name %></td>
-  </tr>
-  <tr>
-    <th>レストラン名</th>
-    <td><%= @product.restaurant.name %></td>
-  </tr>
-  <tr>
-    <th>投票数</th>
-    <td><%= @product.votes.count %></td>
-  </tr>
-</table>
-<% if user_signed_in? %>
-  <%= button_to "投票ボタン", product_votes_path(@product), class: "temp" %>
-<% else %>
-  <%= link_to "投票するにはログインしてください。", new_user_session_path %>
-<% end %>
-<h1 class="title">コメント一覧</h1>
-<% if @product.comments.exists? %>
-<table class="box">
-  <thead>
-    <tr>
-      <th>コメント</th>
-      <th>投稿者</th>
-      <th>投稿日時</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @comments.each do |comment| %>
-    <tr>
-      <td><%= comment.content %></td>
-      <td><%= comment.user.name %></td>
-      <td><%= comment.updated_at.to_s %></td>
-    </tr>
+<%= render 'layouts/flash_messages' %>
+<div class="sidemenu">
+  <div class="sidemenu-contents">
+    <h1 class="sidemenu-title">投票する</h1>
+    <% if user_signed_in? %>
+      <%= button_to "投票", product_votes_path(@product), style: "padding:5px 50px" %>
+    <% else %>
+      <%= link_to "投票するにはログインしてください。", new_user_session_path %>
     <% end %>
-  </tbody>
-</table>
-<% else %>
-<h1 class="title">コメントはまだありません</h1>
-<% end %>
-<h1 class="title">コメントする</h1>
-<% if user_signed_in? %>
-  <%= form_with model:[@product, @comment] do |f| %>
-    <%= f.hidden_field :product_id, value: @product.id %>
-    <%= f.text_area :content, size: "40x5", class: "temp" %>
-    <%= f.submit "コメント送信", class: "btn-sm btn-primary" %>
+  </div>
+  <div class="sidemenu-contents">
+    <h1 class="sidemenu-title">コメントを投稿する</h1>
+    <% if user_signed_in? %>
+      <%= form_with model:[@product, @comment] do |f| %>
+        <%= render 'layouts/error_messages', model: f.object %>
+        <%= f.hidden_field :product_id, value: @product.id %>
+        <%= f.text_area :content, size: "30x5", class: "temp" %>
+        <%= f.submit "コメント送信", class: "btn-sm btn-primary", style: "padding:5px 50px" %>
+      <% end %>
+    <% else %>
+      <%= link_to "コメントするにはログインしてください。", new_user_session_path %> 
+    <% end %>
+  </div>
+</div>
+<div class="main">
+  <h1 class="main-title">商品詳細</h1>
+  <table class="main-box">
+    <tr>
+      <th>商品名</th>
+      <td><%= @product.name %></td>
+    </tr>
+    <tr>
+      <th>レストラン名</th>
+      <td><%= @product.restaurant.name %></td>
+    </tr>
+    <tr>
+      <th>登録日</th>
+      <td><%= l @product.created_at, format: :default %></td>
+    </tr>
+    <tr>
+      <th>投票数</th>
+      <td><%= @product.votes.count %></td>
+    </tr>
+  </table>
+</div>
+<div class="main">
+  <h1 class="main-title">コメント一覧</h1>
+  <% if @product.comments.exists? %>
+  <table class="main-box">
+    <thead>
+      <tr>
+        <th>コメント</th>
+        <th>投稿者</th>
+        <th>投稿日時</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment.content %></td>
+        <td><%= comment.user.name %></td>
+        <td><%= l comment.updated_at, format: :default %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% else %>
+  <h1 class="title">コメントはまだありません</h1>
   <% end %>
-<% else %>
- <%= link_to "コメントするにはログインしてください。", new_user_session_path %> 
-<% end %>
+</div>
+<div class="home-link">
+  <%= link_to "商品一覧に戻る", products_path %>
+</div>
