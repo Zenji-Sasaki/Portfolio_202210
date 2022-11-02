@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
       flash[:notice] = "コメントの投稿が完了しました。"
       redirect_to product_path(params[:product_id])
     else
-      render "new"
+      flash[:alert] = "コメントの投稿ができませんでした。"
     end
   end
 

@@ -1,8 +1,21 @@
-<% if flash[:notice] %>
-  <p class = "notice"><%= flash[:notice] %></p>
-<% end %>
-<% if flash[:alert] %>
-  <p class = "alert"><%= flash[:alert] %></p>
-<% end %>
-<h1 class="title">ホーム画面</h1>
-<h4 class="title">様々な飲食店の人気メニューをランキング形式で紹介！</h4>
+<%= render 'layouts/flash_messages' %>
+<div class="app-title">
+  <h1 class="home-title">EssRank</h1>
+  <h2>Das Ranking von Essen</h2>
+</div>
+<div class="home-about">
+  <div class="about-sentence">
+    <h1>-About-</h1>
+    <h5>EssRankとは、レストラン及び商品を登録し、ユーザーの投票によって商品のランキングが作成できるアプリです。</h5>
+    <h5>レストラン自体のランキングはよくあるものの人気メニューのランキングは見かけないと思い、作成しました。</h5>
+  </div>
+</div>
+<div class="home-how-to-use">
+  <div class="how-to-use-sentence">
+    <h1>-How to use-</h1>
+    <h5>登録済みのレストランや商品、ランキングについてはログイン不要で閲覧できます。</h5>
+    <h5>ログインする事によって、レストランと商品の登録、及び商品への投票とコメントができます。</h5>
+    <h5>※ゲストユーザーとしてログインもできます。</h5>
+    <h5>ログインするには<%=link_to "こちら", new_user_session_path %>をクリックしてください。</h5>
+  </div>
+</div>

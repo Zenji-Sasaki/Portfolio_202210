@@ -1,3 +1,31 @@
-// Place all the styles related to the restaurants controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.home-title {
+  font-size: 50px;
+}
+
+.app-title {
+  position: relative;
+  padding-top: 5%;
+  text-align: center;
+}
+
+.home-about {
+  position: relative;
+  padding: 7%;
+  text-align: center;
+}
+
+.about-sentence {
+  padding: 5%;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.home-how-to-use {
+  position: relative;
+  text-align: center;
+}
+
+.how-to-use-sentence {
+  background-color: #f4a460;
+  padding: 5%;
+}

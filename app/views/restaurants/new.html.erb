@@ -1,14 +1,30 @@
-<h1 class="title">新規レストラン登録</h1>
-<%= form_with model: @restaurant do |f| %>
-<table class="box">
-  <tr>
-    <th><%= f.label :name , "レストラン名" %></th>
-    <td><%= f.text_field :name, style: "width:100%" %></td>
-  </tr>
-  <tr>
-    <th><%= f.label :category , "カテゴリー" %></th>
-    <td><%= f.select :category, [["test1", "test1"], ["test2", "test2"]], include_blank: "選択してください" %></td>
-  </tr>
-</table>
-<%= f.submit "登録", class: "btn btn-primary temp" %>
-<% end %>
+<%= render 'layouts/flash_messages' %>
+<div class="main">
+  <h1 class="main-title">新規レストラン登録</h1>
+  <%= form_with model: @restaurant do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
+  <table class="main-box">
+    <tr>
+      <th><%= f.label :name , "レストラン名" %></th>
+      <td><%= f.text_field :name, style: "width:100%" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :category , "カテゴリー" %></th>
+      <td>
+        <%= f.select :category,
+        [["ファストフード", "ファストフード"],
+        ["ラーメン", "ラーメン"],
+        ["そば・うどん", "そば・うどん"],
+        ["カレー", "カレー"],
+        ["丼もの", "丼もの"],
+        ["中華", "中華"],
+        ["寿司", "寿司"],
+        ["その他", "その他"]],
+        include_blank: "選択してください" %>
+        </td>
+    </tr>
+  </table>
+  <%= f.submit "登録", class: "btn btn-primary btn-custom" %>
+  <% end %>
+</div>
+<%= render 'layouts/home_link' %>
