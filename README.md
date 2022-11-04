@@ -34,4 +34,5 @@ Rails 6.1.7
 ruby 3.1.2p20
 
 <h2>6. ER図</h2>
-!(https://user-images.githubusercontent.com/104680845/199909792-991b0302-87dc-4565-a32e-841bdd916f2a.png)
+![image](https://user-images.githubusercontent.com/104680845/199914474-858ac8b4-fca4-4921-a0d0-61bc4cb46beb.png)
+[erd.pdf](https://github.com/Zenji-Sasaki/Portfolio_202210/files/9935868/erd.pdf)
