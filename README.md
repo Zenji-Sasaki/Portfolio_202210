@@ -2,7 +2,8 @@
 
 <h2>1. このアプリについて</h2>
 レストランと商品を登録し、投票によってランキングが作成できるアプリ、EssRankです。<br>
-名前の由来はドイツ語のEssen(食事)とRank(ランキング)を組み合わせた造語です。
+名前の由来はドイツ語のEssen(食事)とRank(ランキング)を組み合わせた造語です。<br>
+<img src="https://user-images.githubusercontent.com/104680845/199919710-87b0c4b4-ed04-4072-ac2a-1237678c0451.png" alt="html" title="html">
 
 <h2>2. なぜ作ったか</h2>
 レストランそのもののランキングは良く見かけますが、商品を取り上げた人気商品ランキングはあまり見ないと思い、作成しました。<br>
@@ -30,8 +31,13 @@
 また、複雑な作りでないため、応用が効く事と、改修をしやすくする事を意識しました。
 
 <h2>5. 開発環境</h2>
-Rails 6.1.7
+Rails 6.1.7<br>
 ruby 3.1.2p20
 
 <h2>6. ER図</h2>
 <img src="https://user-images.githubusercontent.com/104680845/199914474-858ac8b4-fca4-4921-a0d0-61bc4cb46beb.png" alt="html" title="html">
+
+<h2>7. デモ画像</h2>
+<img src="https://user-images.githubusercontent.com/104680845/199919849-6f46cbe5-d6e7-414d-a41a-fb79bc2f7143.png" alt="html" title="html">
+<img src="https://user-images.githubusercontent.com/104680845/199919955-a1d327bd-4ff5-4494-b70c-43bfb62b2c7a.png" alt="html" title="html">
+<img src="https://user-images.githubusercontent.com/104680845/199920056-6fedcb5b-f884-4640-aec4-496ad06d34de.png" alt="html" title="html">
