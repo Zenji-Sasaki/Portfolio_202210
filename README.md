@@ -27,3 +27,6 @@
 5. 開発環境
 Rails 6.1.7
 ruby 3.1.2p20
+
+
+![image](https://user-images.githubusercontent.com/104680845/199909792-991b0302-87dc-4565-a32e-841bdd916f2a.png)
