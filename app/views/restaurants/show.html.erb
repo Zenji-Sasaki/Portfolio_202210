@@ -33,6 +33,7 @@
     </table>
   </div>
 </div>
+<% if @restaurant.products.exists? %>
 <div class="detail">
   <h1 class="detail-title">人気商品ランキングTOP5</h1>
   <% @ranking.each.with_index(1) do |product, i| %>
@@ -54,9 +55,10 @@
   </table>
   <% end %>
 </div>
+<% end %>
 <div class="detail">
-  <h1 class="detail-title">商品一覧(登録順)</h1>
   <% if @restaurant.products.exists? %>
+  <h1 class="detail-title">商品一覧(登録順)</h1>
   <table class="detail-box">
     <thead>
       <tr>
@@ -77,6 +79,7 @@
   </table>
   <% else %>
   <h4 style="text-align:center">登録済みの商品はまだありません。</h4>
+  <% end %>
   <% end %>
 </div>
 <div class="home-link">
