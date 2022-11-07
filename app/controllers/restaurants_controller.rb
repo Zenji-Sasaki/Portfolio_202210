@@ -13,7 +13,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(params.require(:restaurant).permit(:name, :category))
     if @restaurant.save
       flash[:notice] = "レストランを登録しました。"
-      redirect_to :restaurants
+      redirect_to root_path
     else
       flash[:alert] = "レストランを登録できませんでした。"
       render "new"

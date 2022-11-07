@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
     @restaurant = Restaurant.find(params[:product][:restaurant_id])
     if @product.save
       flash[:notice] = "商品を登録しました。"
-      redirect_to :products
+      redirect_to root_path
     else
       flash[:alert] = "商品を登録できませんでした。"
       render "new"
@@ -43,10 +43,12 @@ class ProductsController < ApplicationController
 
   def ranking
     @ranking = Product.find(Vote.group(:product_id).order('count(product_id) desc').limit(10).pluck(:product_id))
+    @search = Product.ransack(params[:q])
+    @products = @search.result
   end
 
   private
   def product_params
-    params.require(:product).permit(:name, :restaurant_id, :user_id)
+    params.require(:product).permit(:name, :category, :image, :restaurant_id, :user_id)
   end
 end

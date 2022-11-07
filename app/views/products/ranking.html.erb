@@ -1,7 +1,7 @@
-<div class="main">
-  <h1 class="main-title">総合ランキングTOP10</h1>
+<div class="detail">
+  <h1 class="detail-title">総合ランキングTOP10</h1>
   <% @ranking.each.with_index(1) do |product, i| %>
-  <table class="main-box">
+  <table class="detail-box">
     <thead>
       <tr>
         <th>順位</th>
@@ -19,6 +19,11 @@
       </tr>
     </tbody>
   </table>
+  <% if product.image.present? %>
+    <%= image_tag product.image.url(:thumb) %>
+  <% else %>
+    <h1 class="ranking-image">No Image</h1>
+  <% end %>
   <% end %>
 </div>
 <%= render 'layouts/home_link' %>

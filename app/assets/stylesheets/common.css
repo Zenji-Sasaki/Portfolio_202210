@@ -13,6 +13,7 @@ footer {
   text-align: center;
   padding: 5px 0;
   background-color: white;
+  border-top: 1px #ddd solid;
   color: #f4a460;
   height: 40px;
   width: 100%;
@@ -30,50 +31,69 @@ footer {
   margin-top: 35px;
 }
 
-table {
-  border-collapse: separate;
+table{
+  border-collapse:separate;
   border-spacing: 0;
+  margin: auto;
 }
 
-table th {
-  background-color: #add8e6;
-  padding: 10px 20px;
-  border: solid 1px;
+table th{
+  text-align: center;
+  color:white;
+  background: linear-gradient(#829ebc,#225588);
+  border: 1px solid #3c6690;
+  box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;
+  width: 15%;
+  padding: 10px 0;
 }
 
-table td {
-  background-color: #f0f8ff;
-  padding: 10px 20px;
-  border: solid 1px;
+table td{
+  text-align: center;
+  border: 1px solid #a8b7c5;
+  box-shadow: 0px -3px 5px 1px #eee inset;
+  width: 15%;
+  padding: 10px 0;
 }
 
 .title {
   font-size: 30px;
   text-shadow: 1px 1px 2px silver;
-  margin: 5% 30%;
+  margin: 5% 5% 0 30%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  border: 2px #f4a460 solid;
 }
 
 .sidemenu {
-  float: left;
-  width: 24%;
+  width: 25%;
+  height: 100%;
   text-align: center;
-  margin: 5% 0;
+  margin: 2% 0;
+  background-color: white;
+  border: 1px #ddd solid;
+  position: fixed;
 }
 
 .sidemenu-title {
-  font-size: 30px;
+  font-size: 20px;
 }
 
 .sidemenu-contents {
   padding: 30px;
-  border: 1px #ddd solid;
-  border-radius: 10px;
+  border-bottom: 1px #ddd solid;
   margin: 2%;
   background-color: white;
 }
 
 .box {
-  margin: 3% 25%;
+  margin: 5% 5% 0 30%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  border: 2px #f4a460 solid;
 }
 
 .home-link {
@@ -82,25 +102,52 @@ table td {
 }
 
 .btn-custom {
-  width: 30%;
-  margin: 5%;
-  padding: 30px;
+  width: 40%;
 }
 
-.main {
+.register {
+  width: 60%;
+  margin: 5% 20%;
   background-color: white;
-  width: 50%;
+  padding: 20px;
   border-radius: 10px;
-  border: 1px #ddd solid;
-  margin: 5% 25%;
+  text-align: center;
+  border: 2px #f4a460 solid;
 }
 
-.main-title {
+.register-title {
   font-size: 30px;
   text-shadow: 1px 1px 2px silver;
   margin: 5%;
 }
-.main-box {
-  margin: 5%;
+.register-box {
+  margin: 5% 10%;
+  padding: 30px;
+}
+
+.detail {
+  width: 50%;
+  margin: 5% 5% 0 30%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  border: 2px #f4a460 solid;
+}
+
+.detail-title {
+  font-size: 30px;
+  text-shadow: 1px 1px 2px silver;
+}
+
+.detail-box {
+  margin: 5% auto;
+  padding: 30px;
+
+}
+
+.ranking-image {
+  border: 1px solid;
+  margin: auto;
   padding: 30px;
 }
