@@ -4,34 +4,39 @@
   <% if user_signed_in? %>
     <%= form_with url: new_product_path do |f| %>
       <%= f.hidden_field :restaurant_id, value: @restaurant.id %>
-      <%= f.submit "登録画面へ", class: "btn btn-primary temp" %>
+      <%= f.submit "登録画面へ", class: "btn btn-primary" %>
     <% end %>
   <% else %>
     <%= link_to "登録するにはログインしてください。", new_user_session_path %>
   <% end %>
   </div>
+  <div class="sidemenu-contents">
+    <%= link_to "ホーム画面に戻る", root_path %>
+  </div>
 </div>
-<div class="main">
-  <h1 class="main-title">レストラン詳細</h1>
-  <table class="main-box">
-    <tr>
-      <th>レストラン名</th>
-      <td><%= @restaurant.name %></td>
+<div class="detail">
+  <h1 class="detail-title">レストラン詳細</h1>
+  <div class="detail-box">
+    <table>
+      <tr>
+        <th>レストラン名</th>
+        <td><%= @restaurant.name %></td>
+      </tr>
+      <tr>
+        <th>カテゴリー</th>
+        <td><%= @restaurant.category %></td>
+      </tr>
+      <tr>
+      <th>登録日</th>
+      <td><%= l @restaurant.created_at, format: :default %></td>
     </tr>
-    <tr>
-      <th>カテゴリー</th>
-      <td><%= @restaurant.category %></td>
-    </tr>
-    <tr>
-    <th>登録日</th>
-    <td><%= l @restaurant.created_at, format: :default %></td>
-  </tr>
-  </table>
+    </table>
+  </div>
 </div>
-<div class="main">
-  <h1 class="main-title">人気商品ランキングTOP5</h1>
+<div class="detail">
+  <h1 class="detail-title">人気商品ランキングTOP5</h1>
   <% @ranking.each.with_index(1) do |product, i| %>
-  <table class="main-box">
+  <table class="detail-box">
     <thead>
       <tr>
         <th>順位</th>
@@ -49,10 +54,10 @@
   </table>
   <% end %>
 </div>
-<div class="main">
-  <h1 class="main-title">商品一覧(登録順)</h1>
+<div class="detail">
+  <h1 class="detail-title">商品一覧(登録順)</h1>
   <% if @restaurant.products.exists? %>
-  <table class="main-box">
+  <table class="detail-box">
     <thead>
       <tr>
         <th>商品名</th>

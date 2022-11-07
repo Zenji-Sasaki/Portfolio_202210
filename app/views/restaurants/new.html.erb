@@ -1,12 +1,13 @@
 <%= render 'layouts/flash_messages' %>
-<div class="main">
-  <h1 class="main-title">新規レストラン登録</h1>
+<div class="register">
+  <h1 class="register-title">新規レストラン登録</h1>
   <%= form_with model: @restaurant do |f| %>
   <%= render 'layouts/error_messages', model: f.object %>
-  <table class="main-box">
+  <div class="register-box">
+  <table>
     <tr>
       <th><%= f.label :name , "レストラン名" %></th>
-      <td><%= f.text_field :name, style: "width:100%" %></td>
+      <td><%= f.text_field :name, style: "width:80%" %></td>
     </tr>
     <tr>
       <th><%= f.label :category , "カテゴリー" %></th>
@@ -24,7 +25,9 @@
         </td>
     </tr>
   </table>
+</div>
   <%= f.submit "登録", class: "btn btn-primary btn-custom" %>
   <% end %>
+  <%= render 'layouts/home_link' %>
 </div>
-<%= render 'layouts/home_link' %>
+

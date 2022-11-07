@@ -1,5 +1,3 @@
-<%= render 'layouts/flash_messages' %>
-<h1 class="title">商品一覧(登録順)</h1>
 <div class="sidemenu">
   <div class="sidemenu-contents">
     <h1 class="sidemenu-title">商品検索</h1>
@@ -8,25 +6,54 @@
       <%= f.submit "検索" %>
     <% end %>
   </div>
-</div>
-<table class="box">
-  <thead>
-    <tr>
-      <th>商品名</th>
-      <th>レストラン名</th>
-      <th>カテゴリー</th>
-      <th>投票数</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @products.each do |product| %>
-    <tr>
-      <td><%= link_to product.name, product %></td>
-      <td><%= link_to product.restaurant.name, product.restaurant %></td>
-      <td><%= product.restaurant.category %></td>
-      <td><%= product.votes.count %></td>
-    </tr>
+    <div class="sidemenu-contents">
+    <h1 class="sidemenu-title">カテゴリー検索</h1>
+    <%= search_form_for @search do |f| %>
+      <%= f.select :category_cont,
+      [["ファストフード", "ファストフード"],
+      ["ラーメン", "ラーメン"],
+      ["そば・うどん", "そば・うどん"],
+      ["カレー", "カレー"],
+      ["丼もの", "丼もの"],
+      ["中華", "中華"],
+      ["寿司", "寿司"],
+      ["その他", "その他"]],
+      include_blank: "選択してください" %>
+      <%= f.submit "検索" %>
     <% end %>
-  </tbody>
-</table>
+  </div>
+  <div class="sidemenu-contents">
+    <%= link_to "ホーム画面に戻る", root_path %>
+  </div>
+</div>
+<h1 class="title">商品一覧(登録順)</h1>
+<div class="box">
+  <table>
+    <thead>
+      <tr>
+        <th>商品画像</th>
+        <th>商品名</th>
+        <th>レストラン名</th>
+        <th>カテゴリー</th>
+        <th>投票数</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+      <tr>
+      <% if product.image.present? %>
+        <td><%= image_tag product.image.url(:thumb) %></td>
+      <% else %>
+        <td>No Image</td>
+      <% end %>
+        <td><%= link_to product.name, product %></td>
+        <td><%= link_to product.restaurant.name, product.restaurant %></td>
+        <td><%= product.category %></td>
+        <td><%= product.votes.count %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 <%= render 'layouts/home_link' %>
+

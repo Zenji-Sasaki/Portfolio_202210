@@ -22,9 +22,9 @@
     <% end %>
   </div>
 </div>
-<div class="main">
-  <h1 class="main-title">商品詳細</h1>
-  <table class="main-box">
+<div class="detail">
+  <h1 class="detail-title">商品詳細</h1>
+  <table class="detail-box">
     <tr>
       <th>商品名</th>
       <td><%= @product.name %></td>
@@ -42,11 +42,16 @@
       <td><%= @product.votes.count %></td>
     </tr>
   </table>
+  <% if @product.image.present? %>
+    <%= image_tag @product.image.url(:thumb) %>
+  <% else %>
+    <h1 class="ranking-image">No Image</h1>
+  <% end %>
 </div>
-<div class="main">
-  <h1 class="main-title">コメント一覧</h1>
+<div class="detail">
+  <h1 class="detail-title">コメント一覧</h1>
   <% if @product.comments.exists? %>
-  <table class="main-box">
+  <table class="detail-box">
     <thead>
       <tr>
         <th>コメント</th>
@@ -65,7 +70,7 @@
     </tbody>
   </table>
   <% else %>
-  <h1 class="title">コメントはまだありません</h1>
+  <h1 class="detail-title">コメントはまだありません</h1>
   <% end %>
 </div>
 <div class="home-link">
