@@ -69,3 +69,5 @@ gem 'net-imap'
 gem 'net-pop'
 gem 'carrierwave'
 gem 'rmagick'
+gem 'fog-aws'
+gem "aws-sdk-s3", require: false 
