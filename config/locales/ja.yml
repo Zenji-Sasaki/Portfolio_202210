@@ -6,6 +6,7 @@ ja:
         category: カテゴリー
       product:
         name: 商品名
+        category: カテゴリー
   errors:
     format: "%{attribute}%{message}"
     messages:

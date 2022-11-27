@@ -30,3 +30,13 @@
   background-color: #f4a460;
   padding: 5%;
 }
+
+@media screen and (max-width:767px) {
+.app-title {
+  padding-top: 30%;
+}
+
+.how-to-use-sentence {
+  padding-bottom: 10%;
+}
+}
